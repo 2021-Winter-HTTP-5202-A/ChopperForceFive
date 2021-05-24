@@ -5,11 +5,8 @@ require_once "../Library/form-functions.php";
 
 $user_id=$recommender=$award2=$reason=$present=$days=$remarks="";
  $s2 = new Award();
-
  $user_id2 = $s2->getUsers(DatabaseContext::dbConnect());
-
-
-
+//Pulls information from database
 if(isset($_POST['updateAward'])){
     $id= $_POST['id'];
     // var_dump($id);
@@ -25,17 +22,11 @@ if(isset($_POST['updateAward'])){
     $present=$award->present;
     $days=$award->days;
     $remarks=$award->remarks;
-
-
-    // var_dump($car);
-    // var_dump($id);
 }
-
+//Uses information from database
 if(isset($_POST['updAward'])){
     $id=$_POST['sid'];
-    
     var_dump($_POST);
-
     $user_id=$_POST['user_id'];
     $recommender=$_POST['recommender'];
     $award2=$_POST['award'];

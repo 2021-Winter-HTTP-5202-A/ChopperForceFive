@@ -2,15 +2,12 @@
 require_once "../Models/DatabaseContext.php";
 require_once "../Models/Award.php";
 require_once "../Library/form-functions.php";
-
 $dbcon= DatabaseContext::dbConnect();//DatabaseContext
 $s = new Award();
 //DO THIS TO USERS
 $user_id = $s->getUsers(DatabaseContext::dbConnect());
 //$user_id,$recommender,$award,$reason,$present,$days,$remarks
-
-if(isset($_POST['addAward'])){//MAKE THIS MATCH BUTTON
-    
+if(isset($_POST['addAward'])){//MAKE THIS MATCH BUTTON   
     $user_id=$_POST ['user_id'];
     $recommender=$_POST ['recommender'];
     $award=$_POST ['award'];
@@ -18,8 +15,6 @@ if(isset($_POST['addAward'])){//MAKE THIS MATCH BUTTON
     $present=$_POST ['present'];
     $days=$_POST ['days'];
     $remarks=$_POST ['remarks'];
-
-    
     $db = DatabaseContext::dbConnect();
     $s = new Award();
     $c = $s->addAward($user_id,$recommender,$award,$reason,$present,$days,$remarks,$db);
@@ -28,13 +23,10 @@ if(isset($_POST['addAward'])){//MAKE THIS MATCH BUTTON
 
     }
     else{
-        echo "problem adding car";
+        echo "problem adding report";
     }
 };
-
 ?>
-
-
 <html lang="en">
 <h1 style="color:white;">Add a New Award Recipient </h1>
 <head>

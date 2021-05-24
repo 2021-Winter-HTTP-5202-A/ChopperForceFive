@@ -7,7 +7,7 @@ $qualifications_category_name="";
 // $user_id = $s2->getUsers(DatabaseContext::dbConnect());
 
 
-
+//Gets information from Duty
 if(isset($_POST['updateDutie'])){
     $id= $_POST['id'];
     var_dump($id);
@@ -22,7 +22,7 @@ if(isset($_POST['updateDutie'])){
 
 
 }
-
+//Updates Dutie
 if(isset($_POST['updDutie'])){
     $id=$_POST['sid'];
     
