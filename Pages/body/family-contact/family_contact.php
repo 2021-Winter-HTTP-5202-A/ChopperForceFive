@@ -32,7 +32,7 @@ if(isset($_GET['search']) && $searchKey){
         <input type="text" class="form-control" id="frg_search" name="search" placeholder="Search By Name">
         <input type="submit" value="Search" class="btn btn-success"/>
     </form>
-
+    <a href="fc_create.php" class="btn btn-info btn_link">Add new Family Contact</a>
     <?php
         if(count($fcList) === 0){
             echo("<p class='not-found'>No Results Found<p>");
@@ -44,14 +44,14 @@ if(isset($_GET['search']) && $searchKey){
                     <th scope="col">Full Name</th>
                     <th scope="col">Rank</th>
                     <th scope="col">Family Member Name</th>
-                    <th scope="col">Relationship</th>
-                    <th scope="col">Phone</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Family Member Mailing Address</th>
-                    <th scope="col">Preference Form</th>
+                        <th scope="col">Relationship</th>
+                        <th scope="col">Phone</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Family Member Mailing Address</th>
+                        <th scope="col">Preference Form</th>
                     <th scope="col">Physical Location(if Different)</th>
-                    <th scope="col"></th>
-                    <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
                 </tr>
             <thead>
             <tbody>
@@ -59,11 +59,11 @@ if(isset($_GET['search']) && $searchKey){
                     <tr>
                         <td><?= $contact->full_name; ?></td>
                         <td><?= $contact->rank; ?></td>
-                        <td><?= $contact->member_name; ?></td>
-                        <td><?= $contact->relationship; ?></td>
-                        <td><?= $contact->phone; ?></td>
-                        <td><?= $contact->email; ?></td>
-                        <td><?= $contact->address; ?></td>
+                            <td><?= $contact->member_name; ?></td>
+                            <td><?= $contact->relationship; ?></td>
+                            <td><?= $contact->phone; ?></td>
+                            <td><?= $contact->email; ?></td>
+                            <td><?= $contact->address; ?></td>
                         <td><?= $contact->preference_form ? 'Yes' : 'No'; ?></td>
                         <td><?= $contact->physical_location; ?></td>
                         <td>

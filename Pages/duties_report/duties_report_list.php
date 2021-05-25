@@ -2,11 +2,11 @@
 require_once "../Models/DatabaseContext.php";
 require_once "../Models/Dutie.php";
 
-
+// DATABASE CONNECTION
 $dbcon= DatabaseContext::dbConnect();//DatabaseContext
+//DUTIE MODEL
 $s = new Dutie();
 $Duties = $s->getAllDuties(DatabaseContext::dbConnect());
-//id user_id recommender award reason present days remarks
 ?>
 <!--
 Form By Journey
@@ -19,8 +19,8 @@ Form By Journey
 <table class="table table-bordered tbl tbl__frg">
     <thead>
         <tr>
-            <th>Dutie/Qualification ID</th>
-            <th>Dutie/ Qualification Name</th>
+            <th>Duty/Qualification ID</th>
+            <th>Duty/ Qualification Name</th>
             
         </tr>
     </thead>
@@ -30,6 +30,7 @@ Form By Journey
             <tr>
                 <td><?= $Dutie->id; ?></td>
                 <td><?= $Dutie->qualifications_category_name; ?></td>
+                <!-- UPDATE/DELETE BUTTONS -->
                 <td>
                     <form action="../Pages/duties_report_update.php" method="post">
                         <input type="hidden" name="id" value="<?= $Dutie->id; ?>"/>
@@ -46,6 +47,6 @@ Form By Journey
         <?php } ?>
         
     </tbody>
-    <a href="./duties_report_add.php" id="btn_back" class="btn btn-success float-left">Add New Dutie</a>
+    <a href="./duties_report_add.php" id="btn_back" class="btn btn-success float-left">Add New Duty</a>
 </table>
 </body>

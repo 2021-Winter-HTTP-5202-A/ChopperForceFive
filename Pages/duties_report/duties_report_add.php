@@ -2,24 +2,19 @@
 require_once "../Models/DatabaseContext.php";
 require_once "../Models/Dutie.php";
 
+// DATABASE CONNECTION
 
 $dbcon= DatabaseContext::dbConnect();//DatabaseContext
 $s = new Dutie();
-
-
+// ADD DUTIE
 if(isset($_POST['addDutie'])){
     
     $qualifications_category_name=$_POST ['qualifications_category_name'];
-    
-
-    
     $db = DatabaseContext::dbConnect();
     $s = new Dutie();
     $c = $s->addDutie($qualifications_category_name,$db);
     if($c){
         header("Location:duties_report_list.php ");    
-
-
     }
     else{
         echo "problem adding car";
@@ -37,8 +32,6 @@ if(isset($_POST['addDutie'])){
 
 <body>
 
-<!-- <div>
-       Form to Add  Qualification/Duty -->
     <form action="" method="post">
 
   
@@ -48,7 +41,7 @@ if(isset($_POST['addDutie'])){
                    value="" placeholder="Enter the name of the duty">
             <span style="color: red">
 
-
+        <!-- SUBMIT/BACK BUTTONS -->
         <a href="./duties_report_list.php" id="btn_back" class="btn btn-primary float-right">Back</a>
         <button type="submit"  class="btn btn-success float-left" name="addDutie"
                  id="btn-submit">

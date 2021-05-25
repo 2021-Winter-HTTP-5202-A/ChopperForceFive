@@ -1,16 +1,15 @@
 <?php
 require_once "../Models/DatabaseContext.php";
 require_once "../Models/Award.php";
-
+// DATABASE CONNECTION
 
 $dbcon= DatabaseContext::dbConnect();//DatabaseContext
+// AWARD MODEL
 $s = new Award();
 $Awards = $s->getAllAwards(DatabaseContext::dbConnect());
 //id user_id recommender award reason present days remarks
 ?>
-<!--
-Form By Journey
-    !-->
+
     <body>
 
 
@@ -34,7 +33,7 @@ Form By Journey
         </tr>
     </thead>
     <tbody>
-
+<!-- LIST AWARD ITEMS -->
     <?php foreach ($Awards as $award) { ?>
             <tr>
                 <td><?= $award->id; ?></td>
@@ -45,6 +44,7 @@ Form By Journey
                 <td><?= $award->reason; ?></td>
                 <td><?= $award->days; ?></td>
                 <td><?= $award->remarks; ?></td>
+                <!-- DELETE/UPDATE BUTTONS -->
                 <td>
                     <form action="../Pages/awards_report_update.php" method="post">
                         <input type="hidden"  name="id" value="<?= $award->id; ?>"/>

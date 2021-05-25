@@ -7,14 +7,14 @@ $qualifications_category_name="";
 // $user_id = $s2->getUsers(DatabaseContext::dbConnect());
 
 
-//Gets information from Duty
+// GET AND DISPLAY DUTIE INFO AS PLACE HOLDERS
 if(isset($_POST['updateDutie'])){
     $id= $_POST['id'];
     var_dump($id);
 
     $dbcon= DatabaseContext::dbConnect();
     var_dump($_POST);
-
+    //DUTIE MODEL
     $s = new Dutie();
     $Dutie = $s->getDutieById($id, $dbcon);
 
@@ -22,15 +22,16 @@ if(isset($_POST['updateDutie'])){
 
 
 }
-//Updates Dutie
+//UPDATES THE DUTIE
 if(isset($_POST['updDutie'])){
     $id=$_POST['sid'];
     
     var_dump($_POST);
 
     $qualifications_category_name=$_POST['qualifications_category_name'];
-
+    // DATABASE CONNECTION
     $dbcon= DatabaseContext::dbConnect();
+    // DUTIE MODEL
     $s = new Dutie();
     $count = $s->updateDutie($id,$qualifications_category_name,$dbcon);
 
@@ -64,7 +65,7 @@ if(isset($_POST['updDutie'])){
             <input type="text" class="form-control" id="user_id" name="qualifications_category_name"
                    value="<?=$qualifications_category_name;?>">
         </div>
-
+        <!-- BACK/UPDATE BUTTONS -->
         <a href="duties_report_list.php" id="btn_back" class="btn btn-success float-left">Back</a>
         <button type="submit" name="updDutie"
                 class="btn btn-primary float-right" id="btn-submit">

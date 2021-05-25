@@ -1,6 +1,7 @@
 <?php
 class Award
 {
+    //GET ALL USERS
     public function getUsers($db){
         $query = "SELECT *  FROM user";//DOUBLECHECK NAME
         $pdostm = $db->prepare($query);
@@ -8,7 +9,8 @@ class Award
         $results = $pdostm->fetchAll(\PDO::FETCH_OBJ);
         return $results;
     }
-    public function getAwardsByUser($db, $user){
+    //GET AWARDS ASSOCIATED WITH A USER
+    public function getAwardsByUser($db, $user){   
         $query = "SELECT * FROM awards_report_page WHERE user= :user";
         $pdostm = $db->prepare($query);
         $pdostm->bindValue(':make', $user, \PDO::PARAM_STR);
@@ -16,6 +18,7 @@ class Award
         $s = $pdostm->fetchAll(PDO::FETCH_OBJ);
         return $s;
     }
+    // GET AWARDS BY ID
     public function getAwardsById($id, $db){
         $sql = "SELECT * FROM awards INNER JOIN user ON user.id = awards.user_id where awards.id = :id";
         $pst = $db->prepare($sql);
@@ -23,6 +26,7 @@ class Award
         $pst->execute();
         return $pst->fetch(\PDO::FETCH_OBJ);
     }
+    // GET ALL AWARDS
     public function getAllAwards($dbcon){
         $sql = "SELECT CONCAT(user.first_name,' ',user.last_name) as Username, awards.id,user_id,awards.recommender
         ,awards.award,awards.reason,awards.present,awards.days,awards.remarks FROM awards, user where user.id = awards.user_id";
@@ -31,6 +35,7 @@ class Award
         $cars = $pdostm->fetchAll(\PDO::FETCH_OBJ);
         return $cars;
     }
+    // ADD AWARD, AUTO INCREMENT ID
     public function addAward( $user_id,$recommender,$award,$reason,$present,$days,$remarks,$db)
     {
         $sql = "INSERT INTO awards (user_id, recommender, award,reason,present,days,remarks) 
@@ -48,6 +53,7 @@ class Award
         $count = $pst->execute();
         return $count;
     }
+    // DELETE AWARD BY D
     public function deleteAward($id, $db){
         $sql = "DELETE FROM awards WHERE id = :id";
         $pst = $db->prepare($sql);
@@ -55,6 +61,7 @@ class Award
         $count = $pst->execute();
         return $count;
     }
+    // UPDATE AWARD
     public function updateAward($id,$user_id,$recommender,$award,$reason,$present,$days,$remarks,$db){
         $sql = "Update awards
                 set 

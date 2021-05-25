@@ -4,9 +4,10 @@ require_once "../Models/Award.php";
 require_once "../Library/form-functions.php";
 
 $user_id=$recommender=$award2=$reason=$present=$days=$remarks="";
+//CONNECT TO AWARDS MODEL
  $s2 = new Award();
  $user_id2 = $s2->getUsers(DatabaseContext::dbConnect());
-//Pulls information from database
+// PULLS INFORMATION CURRENTLY FROM DATABASE AND MAKES VISIBLE AS PLACEHOLDERS
 if(isset($_POST['updateAward'])){
     $id= $_POST['id'];
     // var_dump($id);
@@ -23,7 +24,7 @@ if(isset($_POST['updateAward'])){
     $days=$award->days;
     $remarks=$award->remarks;
 }
-//Uses information from database
+// UPDATES BY ID
 if(isset($_POST['updAward'])){
     $id=$_POST['sid'];
     var_dump($_POST);
@@ -67,9 +68,7 @@ if(isset($_POST['updAward'])){
         <input type="hidden" name="sid" value="<?= $id; ?>" />
         <div class="form-group">
             <label class = "label label-default" for="user_id">user_id :</label>
-            <!-- <input type="text" class="form-control" id="user_id" name="user_id"
-                   value="" placeholder="Enter user ID">
-            <span style="color: red"> -->
+      <!-- SOLDIER DROP DOWN -->
 
             <select  class="form-control" name="user_id" id="user_id" value="">
                 <?php echo PopulateDropwdownSoldier($user_id2) ?>
@@ -123,7 +122,7 @@ if(isset($_POST['updAward'])){
 
             </span>
         </div>
-
+        <!-- SUBMIT/BACK BUTTONS -->
         <a href="award_report_list.php" id="btn_back" class="btn btn-success float-left">Back</a>
         <button type="submit" name="updAward"
                 class="btn btn-primary float-right" id="btn-submit">

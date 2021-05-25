@@ -5,11 +5,11 @@
 
 <style>
   <?php 
-    include '../stylesheets/cff.css' 
+    include '../Stylesheets/cff.css';
+    include '../Stylesheets/login.css';
   ?>
-  <?php 
-    include '../stylesheets/login.css';
-    require_once '../Stylesheets/reports_page.css';
+  <?php
+    include '../Stylesheets/reports_page.css';
   ?>
 
 </style>
@@ -19,7 +19,10 @@
 
 <?php
    require_once 'nav.php';
+   require_once '../Models/DatabaseContext.php';
+   require_once '../Models/Account.php';
    require_once './Login/Login.php';
+ 
    require_once 'footer.php'; 
 
 ?>
